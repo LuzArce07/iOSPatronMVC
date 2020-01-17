@@ -20,10 +20,10 @@
         <tbody>
             @foreach($noticias as $noticia)
                 <tr>
-                    <!-- titulo viene del campo de la base de datos -->
+                    <!-- titulo viene del campo que viene de la base de datos -->
                     <td>{{$noticia->titulo}}</td> 
                     <td>
-                        <button>Leer más</button>
+                        <a href="{{route('noticias.show', $noticia->id)}}">Leer más</a>
                     </td>
                 </tr>
             @endforeach

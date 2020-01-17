@@ -22,4 +22,5 @@ class NoticiaController extends Controller
 
 
 
+
 }
