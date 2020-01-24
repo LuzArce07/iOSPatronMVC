@@ -6,9 +6,22 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function dashboard(){
+
+    //Con esto hace que se vaya al login
+    public function __construct() {
+
+        $this->middleware('auth');
+
+    }
+
+    public function dashboard() {
 
         return view('admin.dashboard');
 
     }
+
+
+
 }
+
+
