@@ -13,13 +13,17 @@
 
 
 
-Route::get('/', 'NoticiaController@index')->name('noticias.index');
+Route::get('/', 'NoticiaController@index')->name('front.noticias.index');
 
-Route::get('/noticias/{id}', 'NoticiaController@show')->name('noticias.show'); //{} ahi va los elementos que queremos que sean dinamicos
+Route::get('/noticias/{id}', 'NoticiaController@show')->name('front.noticias.show'); //{} ahi va los elementos que queremos que sean dinamicos
 
 Route::get('/admin', 'AdminController@dashboard')->name('admin.dashboard');
+
+//Atajo para establecer las 7 rutas básicas de un recurso
+
+Route::resource('/admin/noticias', 'Admin\NoticiaController');
 
 Auth::routes(['register' => false]);
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
