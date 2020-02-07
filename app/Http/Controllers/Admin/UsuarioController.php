@@ -53,7 +53,21 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         
-        
+        $usuario = new Usuario();
+        $usuario->name = $request->input('txtNombre');
+        $usuario->email = $request->input('txtCorreo');
+        $usuario->password = bcrypt($request->input('txtContraseña'));
+
+        if ($usuario->save()) {
+
+            //Si pude guardar la noticia
+            return redirect()->route('usuarios.index')->with('exito', '¡El usuario ha sido guardada con éxito!');
+            
+
+        }
+
+        //Aqui no se pudo guardar
+        return redirect()->route('usuarios.index')->with('error', 'No se pudo agregar el usuario, llama al 911');
 
     }
 
@@ -66,19 +80,19 @@ class UsuarioController extends Controller
     public function show($id)
     {
 
-        /*
+        
         $usuario = Usuario::find($id);
         //Si encontro la noticia redirigete al edit
         if($usuario){
 
             $argumentos = array();
             $argumentos['usuario'] = $usuario;
-            return view('admin.usuario.show', $argumentos);
+            return view('admin.usuarios.show', $argumentos);
 
         }
-        return redirect()->route('usuario.index')->with('error', 'No se encontró la noticia');
+        return redirect()->route('usuarios.index')->with('error', 'No se encontró la noticia');
 
-        */
+        
 
     }
 
@@ -91,7 +105,16 @@ class UsuarioController extends Controller
     public function edit($id)
     {
 
-        
+        $usuario = Usuario::find($id);
+        //Si encontro la noticia redirigete al edit
+        if($usuario){
+
+            $argumentos = array();
+            $argumentos['usuario'] = $usuario;
+            return view('admin.usuarios.edit', $argumentos);
+
+        }
+        return redirect()->route('usuarios.index')->with('error', 'No se encontró el usuario');
 
     }
 
@@ -105,7 +128,24 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
 
-        
+        $usuario = Usuario::find($id);
+        if($usuario){
+
+            $usuario->name = $request->input('txtNombre');
+            $usuario->email = $request->input('txtCorreo');
+            $usuario->password = bcrypt($request->input('txtContraseña'));
+
+            if($usuario->save()){
+
+                return redirect()->route('usuarios.edit',$id)->with('exito','¡El Usuario se ACTUALIZÓ exitosamente!');
+                
+            }
+            
+            return redirect()->route('usuarios.edit',$id)->with('error','El Usuario NO se pudo actualizar');
+            
+        }
+
+        return redirect()->route('usuarios.index')->with('error','No se encontró el usuario');
 
     }
 
@@ -118,9 +158,24 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
 
-        
+        $usuario = Usuario::find($id);
+        if($usuario){
+
+            if($usuario->delete()){
+
+                return redirect()->route('usuarios.index')->with('exito', '¡Noticia eliminada exitosamente!');
+
+            }
+
+            return redirect()->route('usuarios.index')->with('error', 'No se puedo eliminar la noticia');
+
+        }
+
+        return redirect()->route('usuarios.index')->with('error', 'No se encontró la noticia');
 
     }
+
+    
 
         
 

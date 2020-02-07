@@ -17,8 +17,8 @@
                     
                 </div>
                 <div class="card-body">
-                    <!--<form method="POST" action="{{route('usuarios.store')}}">
-                            @csrf-->
+                    <form method="POST" action="{{route('usuarios.store')}}">
+                            @csrf
                         <div class="form-group">
 
                             <label for="">Nombre</label>
@@ -50,7 +50,7 @@
 
                         </div>
 
-                    <!--</form>-->
+                    </form>
                     
                 </div>
             </div>
