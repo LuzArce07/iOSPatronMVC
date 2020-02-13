@@ -57,19 +57,19 @@
                         <div class="form-group">
 
                             <label >Email</label>
-                            <input name= "txtCorreo" type="text" value="{{$usuario->email}}" class="form-control" />
+                            <input name= "txtCorreo" type="text" value="{{$usuario->email}}" class="form-control" readonly/>
     
                         </div>
                         <div class="form-group">
 
                             <label >Contraseña</label>
-                            <input type="password" name="txtContraseña" value="{{$usuario->password}}" class="form-control" />
+                            <input id="password" type="password" name="txtContraseña" value="" class="form-control" />
     
                         </div>
                         <div class="form-group">
 
                             <label >Confirmar Contraseña</label>
-                            <input type="password" name="txtContraseña" value="{{$usuario->password}}" class="form-control" />
+                            <input id="confirm_password" type="password" name="txtContraseña" value="" class="form-control" />
     
                         </div>
                         <div class="form-group">

@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Input;
+
 use App\Usuario;
+use App\User;
 
 class UsuarioController extends Controller
 {
@@ -14,6 +17,8 @@ class UsuarioController extends Controller
     public function __construct() {
 
         $this->middleware('auth');
+
+
 
     }
 
@@ -53,6 +58,12 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         
+        $verificacion = User::where('email', $request->input('txtCorreo'))->first();
+        if($verificacion)
+        {
+            return redirect()->route('usuarios.create')->with('error', 'El Usuario ' . $request->input('txtCorreo') . ' ya existe');
+        }
+
         $usuario = new Usuario();
         $usuario->name = $request->input('txtNombre');
         $usuario->email = $request->input('txtCorreo');
@@ -176,9 +187,5 @@ class UsuarioController extends Controller
     }
 
     
-
-        
-
-
 
 }
