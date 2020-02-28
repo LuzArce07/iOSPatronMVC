@@ -17,9 +17,9 @@ Route::get('/', 'NoticiaController@index')->name('front.noticias.index');
 
 Route::get('/noticias/{id}', 'NoticiaController@show')->name('front.noticias.show'); //{} ahi va los elementos que queremos que sean dinamicos
 
-Route::get('/', 'UsuarioController@index')->name('front.usuarios.index');
+//Route::get('/', 'UsuarioController@index')->name('front.usuarios.index');
 
-Route::get('/usuarios/{id}', 'UsuarioController@show')->name('front.usuarios.show'); //{} ahi va los elementos que queremos que sean dinamicos
+//Route::get('/usuarios/{id}', 'UsuarioController@show')->name('front.usuarios.show'); //{} ahi va los elementos que queremos que sean dinamicos
 
 Route::get('/admin', 'AdminController@dashboard')->name('admin.dashboard');
 
