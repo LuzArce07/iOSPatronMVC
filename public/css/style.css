@@ -258,14 +258,14 @@ RESPONSIVE
      display:inline-block;
 }
  .nav-logo .logo > img {
-     width: 100%;
-     max-height: 70px;
+     width: 20%;
+     max-height: auto;
 }
 /*----------------------------*\
 	menu
 \*----------------------------*/
  .nav-menu {
-     margin-left: 20px;
+     margin-left: 5px;
 }
  .nav-menu li a {
      position: relative;
@@ -521,13 +521,14 @@ RESPONSIVE
 }
  .post .post-img > img {
      width: 100%;
+     max-height: auto;
 }
  .post .post-meta {
      margin-top: 15px;
      margin-bottom: 15px;
 }
  .post-meta .post-category {
-     font-size: 13px;
+     font-size: 20px;
      text-transform: uppercase;
      padding: 3px 10px;
      font-weight: 600;
